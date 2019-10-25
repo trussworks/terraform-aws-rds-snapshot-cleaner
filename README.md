@@ -12,8 +12,9 @@ Creates the following resources:
 ## Usage
 
 ```hcl
-module "rds_snapshot_cleaner" {
-  source = "../../modules/aws-rds-snapshot-cleaner"
+module "rds-snapshot-cleaner" {
+  source  = "trussworks/rds-snapshot-cleaner/aws"
+  version = "1.0.0"
 
   cleaner_db_instance_identifier = "app-staging"
   cleaner_dry_run                = "false"
