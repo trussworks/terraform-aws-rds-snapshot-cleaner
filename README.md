@@ -1,4 +1,3 @@
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 Creates an AWS Lambda function to clean up manual RDS snapshots
 on a scheduled interval using [truss-aws-tools](https://github.com/trussworks/truss-aws-tools).
 
@@ -8,6 +7,11 @@ Creates the following resources:
   defined RDS instance.
 * CloudWatch Event to trigger Lambda function on a schedule.
 * AWS Lambda function to actually delete excess manual RDS snapshots.
+
+## Terraform Versions
+
+Terraform 0.12: Pin module version to ~> 2.0.0. Submit pull requests to master branch.
+Terraform 0.11: Pin module version to ~> 1.0.0. Submit pull requests to terraform011 branch.
 
 ## Usage
 
@@ -28,6 +32,7 @@ module "rds-snapshot-cleaner" {
 }
 ```
 
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
 | Name | Description | Type | Default | Required |
