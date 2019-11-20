@@ -3,7 +3,7 @@ on a scheduled interval using [truss-aws-tools](https://github.com/trussworks/tr
 
 Creates the following resources:
 
-  IAM role for Lambda function find and delete expired RDS snapshots for a
+* IAM role for Lambda function find and delete expired RDS snapshots for a
   defined RDS instance.
 * CloudWatch Event to trigger Lambda function on a schedule.
 * AWS Lambda function to actually delete excess manual RDS snapshots.
