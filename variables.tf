@@ -34,6 +34,12 @@ variable "interval_minutes" {
   type        = string
 }
 
+variable "kms_key_arn" {
+  description = "ARN of the KMS key used for encrypting environment variables."
+  type        = string
+  default     = ""
+}
+
 variable "s3_bucket" {
   description = "The name of the S3 bucket used to store the Lambda builds."
   type        = string

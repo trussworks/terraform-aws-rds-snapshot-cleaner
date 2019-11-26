@@ -176,7 +176,7 @@ resource "aws_lambda_function" "main" {
   timeout       = "60"
 
   # Default AWS managed key for lambda functions
-  kms_key_arn = "arn:aws:kms:us-west-2:923914045601:key/1408a5f1-c280-4e54-9276-f68169fbf165"
+  kms_key_arn = var.kms_key_arn
 
   environment {
     variables = {
