@@ -44,6 +44,7 @@ module "rds-snapshot-cleaner" {
 | cloudwatch\_logs\_retention\_days | Number of days to keep logs in AWS CloudWatch. | string | `"90"` | no |
 | environment | Environment tag, e.g prod. | string | n/a | yes |
 | interval\_minutes | How often to run the Lambda function in minutes. | string | `"5"` | no |
+| kms\_key\_arn | ARN of the KMS key used for encrypting environment variables. | string | `""` | no |
 | s3\_bucket | The name of the S3 bucket used to store the Lambda builds. | string | n/a | yes |
 | version\_to\_deploy | The version the Lambda function to deploy. | string | n/a | yes |
 
