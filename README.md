@@ -33,19 +33,29 @@ module "rds-snapshot-cleaner" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| cleaner\_db\_instance\_identifier | The RDS database instance identifier. | string | n/a | yes |
-| cleaner\_dry\_run | Don't make any changes and log what would have happened. | string | n/a | yes |
-| cleaner\_max\_db\_snapshot\_count | The maximum number of manual snapshots allowed. This takes precedence over -retention-days. | string | n/a | yes |
-| cleaner\_retention\_days | The maximum retention age in days. | string | n/a | yes |
-| cloudwatch\_logs\_retention\_days | Number of days to keep logs in AWS CloudWatch. | string | `"90"` | no |
-| environment | Environment tag, e.g prod. | string | n/a | yes |
-| interval\_minutes | How often to run the Lambda function in minutes. | string | `"5"` | no |
-| kms\_key\_arn | ARN of the KMS key used for encrypting environment variables. | string | `""` | no |
-| s3\_bucket | The name of the S3 bucket used to store the Lambda builds. | string | n/a | yes |
-| version\_to\_deploy | The version the Lambda function to deploy. | string | n/a | yes |
+|------|-------------|------|---------|:-----:|
+| cleaner\_db\_instance\_identifier | The RDS database instance identifier. | `string` | n/a | yes |
+| cleaner\_dry\_run | Don't make any changes and log what would have happened. | `string` | n/a | yes |
+| cleaner\_max\_db\_snapshot\_count | The maximum number of manual snapshots allowed. This takes precedence over -retention-days. | `string` | n/a | yes |
+| cleaner\_retention\_days | The maximum retention age in days. | `string` | n/a | yes |
+| cloudwatch\_logs\_retention\_days | Number of days to keep logs in AWS CloudWatch. | `string` | `90` | no |
+| environment | Environment tag, e.g prod. | `any` | n/a | yes |
+| interval\_minutes | How often to run the Lambda function in minutes. | `string` | `5` | no |
+| kms\_key\_arn | ARN of the KMS key used for encrypting environment variables. | `string` | `""` | no |
+| s3\_bucket | The name of the S3 bucket used to store the Lambda builds. | `string` | n/a | yes |
+| version\_to\_deploy | The version the Lambda function to deploy. | `string` | n/a | yes |
+
+## Outputs
+
+No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
