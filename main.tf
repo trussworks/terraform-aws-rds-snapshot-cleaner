@@ -1,39 +1,3 @@
-/**
- * Creates an AWS Lambda function to clean up manual RDS snapshots
- * on a scheduled interval using [truss-aws-tools](https://github.com/trussworks/truss-aws-tools).
- *
- * Creates the following resources:
- *
- * * IAM role for Lambda function find and delete expired RDS snapshots for a
- *   defined RDS instance.
- * * CloudWatch Event to trigger Lambda function on a schedule.
- * * AWS Lambda function to actually delete excess manual RDS snapshots.
- *
- * ## Terraform Versions
- *
- * Terraform 0.12: Pin module version to ~> 2.0.0. Submit pull requests to master branch.
- * Terraform 0.11: Pin module version to ~> 1.0.0. Submit pull requests to terraform011 branch.
- *
- * ## Usage
- *
- * ```hcl
- * module "rds-snapshot-cleaner" {
- *   source  = "trussworks/rds-snapshot-cleaner/aws"
- *   version = "1.0.0"
- *
- *   cleaner_db_instance_identifier = "app-staging"
- *   cleaner_dry_run                = "false"
- *   cleaner_max_db_snapshot_count  = "50"
- *   cleaner_retention_days         = "30"
- *   cloudwatch_logs_retention_days = "90"
- *   environment                    = "staging"
- *   interval_minutes               = "5"
- *   s3_bucket                      = "lambda-builds-us-east-1"
- *   version_to_deploy              = "2.6"
- * }
- * ```
- */
-
 locals {
   pkg  = "truss-aws-tools"
   name = "rds-snapshot-cleaner"
