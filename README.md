@@ -8,6 +8,17 @@ Creates the following resources:
 * CloudWatch Event to trigger Lambda function on a schedule.
 * AWS Lambda function to actually delete excess manual RDS snapshots.
 
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+Creates an AWS Lambda function to clean up manual RDS snapshots
+on a scheduled interval using [truss-aws-tools](https://github.com/trussworks/truss-aws-tools).
+
+Creates the following resources:
+
+* IAM role for Lambda function find and delete expired RDS snapshots for a
+  defined RDS instance.
+* CloudWatch Event to trigger Lambda function on a schedule.
+* AWS Lambda function to actually delete excess manual RDS snapshots.
+
 ## Terraform Versions
 
 Terraform 0.12: Pin module version to ~> 2.0.0. Submit pull requests to master branch.
@@ -32,20 +43,29 @@ module "rds-snapshot-cleaner" {
 }
 ```
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| cleaner\_db\_instance\_identifier | The RDS database instance identifier. | string | n/a | yes |
-| cleaner\_dry\_run | Don't make any changes and log what would have happened. | string | n/a | yes |
-| cleaner\_max\_db\_snapshot\_count | The maximum number of manual snapshots allowed. This takes precedence over -retention-days. | string | n/a | yes |
-| cleaner\_retention\_days | The maximum retention age in days. | string | n/a | yes |
-| cloudwatch\_logs\_retention\_days | Number of days to keep logs in AWS CloudWatch. | string | `"90"` | no |
-| environment | Environment tag, e.g prod. | string | n/a | yes |
-| interval\_minutes | How often to run the Lambda function in minutes. | string | `"5"` | no |
-| kms\_key\_arn | ARN of the KMS key used for encrypting environment variables. | string | `""` | no |
-| s3\_bucket | The name of the S3 bucket used to store the Lambda builds. | string | n/a | yes |
-| version\_to\_deploy | The version the Lambda function to deploy. | string | n/a | yes |
+|------|-------------|------|---------|:-----:|
+| cleaner\_db\_instance\_identifier | The RDS database instance identifier. | `string` | n/a | yes |
+| cleaner\_dry\_run | Don't make any changes and log what would have happened. | `string` | n/a | yes |
+| cleaner\_max\_db\_snapshot\_count | The maximum number of manual snapshots allowed. This takes precedence over -retention-days. | `string` | n/a | yes |
+| cleaner\_retention\_days | The maximum retention age in days. | `string` | n/a | yes |
+| cloudwatch\_logs\_retention\_days | Number of days to keep logs in AWS CloudWatch. | `string` | `90` | no |
+| environment | Environment tag, e.g prod. | `any` | n/a | yes |
+| interval\_minutes | How often to run the Lambda function in minutes. | `string` | `5` | no |
+| kms\_key\_arn | ARN of the KMS key used for encrypting environment variables. | `string` | `""` | no |
+| s3\_bucket | The name of the S3 bucket used to store the Lambda builds. | `string` | n/a | yes |
+| version\_to\_deploy | The version the Lambda function to deploy. | `string` | n/a | yes |
+
+## Outputs
+
+No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
