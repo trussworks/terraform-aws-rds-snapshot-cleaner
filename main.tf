@@ -43,6 +43,8 @@ data "aws_region" "current" {}
 
 data "aws_caller_identity" "current" {}
 
+data "aws_partition" "current" {}
+
 #
 # IAM
 #
@@ -72,7 +74,7 @@ data "aws_iam_policy_document" "main" {
       "logs:PutLogEvents",
     ]
 
-    resources = ["arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws/lambda/${local.name}-${var.cleaner_db_instance_identifier}:*"]
+    resources = ["arn:${data.aws_partition.current.partition}:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws/lambda/${local.name}-${var.cleaner_db_instance_identifier}:*"]
   }
 
   # Allow describing RDS snapshots for a particular RDS instance and RDS
@@ -86,8 +88,8 @@ data "aws_iam_policy_document" "main" {
     ]
 
     resources = [
-      "arn:aws:rds:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:db:${var.cleaner_db_instance_identifier}",
-      "arn:aws:rds:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:snapshot:${var.cleaner_db_instance_identifier}-*",
+      "arn:${data.aws_partition.current.partition}:rds:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:db:${var.cleaner_db_instance_identifier}",
+      "arn:${data.aws_partition.current.partition}:rds:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:snapshot:${var.cleaner_db_instance_identifier}-*",
     ]
   }
 
@@ -101,7 +103,7 @@ data "aws_iam_policy_document" "main" {
     ]
 
     resources = [
-      "arn:aws:rds:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:snapshot:${var.cleaner_db_instance_identifier}-*",
+      "arn:${data.aws_partition.current.partition}:rds:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:snapshot:${var.cleaner_db_instance_identifier}-*",
     ]
   }
 }
