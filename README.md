@@ -33,6 +33,12 @@ module "rds-snapshot-cleaner" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
+
 ## Providers
 
 | Name | Version |
@@ -42,10 +48,10 @@ module "rds-snapshot-cleaner" {
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | cleaner\_db\_instance\_identifier | The RDS database instance identifier. | `string` | n/a | yes |
 | cleaner\_dry\_run | Don't make any changes and log what would have happened. | `string` | n/a | yes |
-| cleaner\_max\_db\_snapshot\_count | The maximum number of manual snapshots allowed. This takes precedence over -retention-days. | `string` | n/a | yes |
+| cleaner\_max\_db\_snapshot\_count | The maximum number of manual snapshots allowed. This takes precedence over -retention-days. | `string` | `""` | no |
 | cleaner\_retention\_days | The maximum retention age in days. | `string` | n/a | yes |
 | cloudwatch\_logs\_retention\_days | Number of days to keep logs in AWS CloudWatch. | `string` | `90` | no |
 | environment | Environment tag, e.g prod. | `any` | n/a | yes |
