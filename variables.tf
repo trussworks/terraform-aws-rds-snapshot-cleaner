@@ -11,6 +11,7 @@ variable "cleaner_dry_run" {
 variable "cleaner_max_db_snapshot_count" {
   description = "The maximum number of manual snapshots allowed. This takes precedence over -retention-days."
   type        = string
+  default     = ""
 }
 
 variable "cleaner_retention_days" {
@@ -49,4 +50,3 @@ variable "version_to_deploy" {
   description = "The version the Lambda function to deploy."
   type        = string
 }
-
