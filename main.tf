@@ -158,7 +158,7 @@ resource "aws_lambda_function" "main" {
     Environment = var.environment
   }
 
-    lifecycle {
+  lifecycle {
     # ignore local filesystem differences
     ignore_changes = [
       "filename",
