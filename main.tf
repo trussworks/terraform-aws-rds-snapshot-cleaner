@@ -129,7 +129,6 @@ resource "aws_lambda_permission" "main" {
 }
 
 resource "aws_lambda_function" "main" {
-  depends_on = [aws_cloudwatch_log_group.main]
 
   s3_bucket = var.s3_bucket
   s3_key    = "${local.pkg}/${var.version_to_deploy}/${local.pkg}.zip"
@@ -157,6 +156,14 @@ resource "aws_lambda_function" "main" {
   tags = {
     Name        = "${local.name}-${var.cleaner_db_instance_identifier}"
     Environment = var.environment
+  }
+
+    lifecycle {
+    # ignore local filesystem differences
+    ignore_changes = [
+      "filename",
+      "last_modified",
+    ]
   }
 }
 
