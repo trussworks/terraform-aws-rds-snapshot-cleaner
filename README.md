@@ -55,6 +55,7 @@ module "rds-snapshot-cleaner" {
 | cleaner\_dry\_run | Don't make any changes and log what would have happened. | `string` | n/a | yes |
 | cleaner\_max\_db\_snapshot\_count | The maximum number of manual snapshots allowed. This takes precedence over -retention-days. | `string` | `""` | no |
 | cleaner\_retention\_days | The maximum retention age in days. | `string` | n/a | yes |
+| cloudwatch\_kms\_key\_arn | ARN of the Cloudwatch KMS key used for encrypting Cloudwatch log groups. | `string` | `""` | no |
 | cloudwatch\_logs\_retention\_days | Number of days to keep logs in AWS CloudWatch. | `string` | `90` | no |
 | environment | Environment tag, e.g prod. | `any` | n/a | yes |
 | interval\_minutes | How often to run the Lambda function in minutes. | `string` | `5` | no |

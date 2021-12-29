@@ -107,6 +107,7 @@ resource "aws_cloudwatch_log_group" "main" {
   # This name must match the lambda function name and should not be changed
   name              = "/aws/lambda/${local.name}-${var.cleaner_db_instance_identifier}"
   retention_in_days = var.cloudwatch_logs_retention_days
+  kms_key_id        = var.cloudwatch_kms_key_arn
 
   tags = {
     Name        = "${local.name}-${var.cleaner_db_instance_identifier}"
