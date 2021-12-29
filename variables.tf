@@ -41,6 +41,12 @@ variable "kms_key_arn" {
   default     = ""
 }
 
+variable "cloudwatch_kms_key_arn" {
+  description = "ARN of the Cloudwatch KMS key used for encrypting Cloudwatch log groups."
+  type        = string
+  default     = ""
+}
+
 variable "s3_bucket" {
   description = "The name of the S3 bucket used to store the Lambda builds."
   type        = string
