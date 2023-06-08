@@ -8,11 +8,6 @@ Creates the following resources:
 * CloudWatch Event to trigger Lambda function on a schedule.
 * AWS Lambda function to actually delete excess manual RDS snapshots.
 
-## Terraform Versions
-
-Terraform 0.13 and later: Pin module version to ~> 3.X. Submit pull requests to master branch.
-
-Terraform 0.12: Pin module version to ~> 2.X. Submit pull requests to terraform012 branch.
 
 ## Usage
 
@@ -33,12 +28,12 @@ module "rds-snapshot-cleaner" {
 }
 ```
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.0 |
 
 ## Providers
@@ -87,4 +82,4 @@ No modules.
 ## Outputs
 
 No outputs.
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
